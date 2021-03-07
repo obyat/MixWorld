@@ -53,7 +53,7 @@ MixWorld Credits:
 
 
 
-    
+
 
 ================================================================Materials===================================================================================
     https://www.c-sharpcorner.com/article/how-to-apply-materials-shaders-and-textures-to-objects-in-unity2/
@@ -88,9 +88,9 @@ MixWorld Credits:
 
 ================================================================Video Tutorials===================================================================================
 
-        https://www.youtube.com/watch?v=iSxifRKQKAA
-        How To Build a Custom Input Manager in Unity C#
-        Studica News
+    https://www.youtube.com/watch?v=iSxifRKQKAA
+    How To Build a Custom Input Manager in Unity C#
+    Studica News
 
 	https://www.youtube.com/watch?v=h2d9Wc3Hhi0&list=PLiyfvmtjWC_V_H-VMGGAZi7n5E0gyhc37
 	Make A 3D Platformer in Unity
