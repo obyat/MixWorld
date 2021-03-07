@@ -1,0 +1,82 @@
+MixWorld Credits:
+
+Assets:
+    1. 
+    Mobile depth water shader
+    Valakh Pavel
+
+    2.
+    Mobile depth water shader
+    Valakh Pavel
+
+    3. 
+    Lowpoly Toon Cat Lite
+    Polydactyl
+    https://assetstore.unity.com/packages/3d/characters/animals/lowpoly-toon-cat-lite-66083
+
+    4.
+    MeshTint Free Burrow Cute Series 
+    Meshtint Studio
+    
+    5.
+    Dog Knight PBR Polyart
+    Dungeon Mason
+
+    6.
+    Desert Kits 64 Sample
+    256px
+
+    7.
+    FREE Stylized PBR Textures Pack
+    Lumo-Art 3D
+
+    8.
+    Standard Assets (for Unity 2018.4)
+    Unity Technologies
+
+    9.
+    Fantasy Kindom - Building Pack Lite
+    xiaolianhuastudio
+    
+    10.
+    Low-Poly Simple Nature Pack
+    JustCreate
+
+    11.
+    Stylized Wood Texture
+    LowlyPoly
+    
+    12.
+    Stylized Speedboat
+    J2Games
+
+Materials:
+    https://www.c-sharpcorner.com/article/how-to-apply-materials-shaders-and-textures-to-objects-in-unity2/
+
+Textures:
+    my photo
+    my dog photo
+
+    boat:
+    https://www.wildtextures.com/wp-content/uploads/wildtextures_colorful_wood_planks_mosaic-480x617.jpg
+    how to:
+    https://www.c-sharpcorner.com/article/how-to-apply-materials-shaders-and-textures-to-objects-in-unity2/
+
+Scripts:
+    Answer by Kling360 · Aug 19, 2017 at 07:59 AM 
+    https://answers.unity.com/questions/527040/how-to-rotate-the-camera-on-a-button-press.html
+
+    https://docs.unity3d.com/ScriptReference/Vector3-back.html
+
+    Youtube video:
+        https://www.youtube.com/watch?v=iSxifRKQKAA
+        How To Build a Custom Input Manager in Unity C#
+        Studica News
+
+Others: 
+   All credits to the rightful owner
+   Best effort has been made to document sources and and give credit to rightful owners and creaters
+
+Project available at:
+    https://github.com/obyat/MixWorld
+    Eductational Purposes only
