@@ -1,6 +1,6 @@
 MixWorld Credits:
 
-Assets:
+================================================================Assets===================================================================================
     1. 
     Mobile depth water shader
     Valakh Pavel
@@ -50,10 +50,21 @@ Assets:
     Stylized Speedboat
     J2Games
 
-Materials:
-    https://www.c-sharpcorner.com/article/how-to-apply-materials-shaders-and-textures-to-objects-in-unity2/
 
-Textures:
+
+
+    
+
+================================================================Materials===================================================================================
+    https://www.c-sharpcorner.com/article/how-to-apply-materials-shaders-and-textures-to-objects-in-unity2/
+    
+
+
+
+
+
+
+================================================================Textures===================================================================================
     my photo
     my dog photo
 
@@ -62,13 +73,21 @@ Textures:
     how to:
     https://www.c-sharpcorner.com/article/how-to-apply-materials-shaders-and-textures-to-objects-in-unity2/
 
-Scripts:
+
+
+
+
+================================================================Scripts===================================================================================
     Answer by Kling360 · Aug 19, 2017 at 07:59 AM 
     https://answers.unity.com/questions/527040/how-to-rotate-the-camera-on-a-button-press.html
 
     https://docs.unity3d.com/ScriptReference/Vector3-back.html
 
-    Youtube video:
+
+
+
+================================================================Video Tutorials===================================================================================
+
         https://www.youtube.com/watch?v=iSxifRKQKAA
         How To Build a Custom Input Manager in Unity C#
         Studica News
@@ -77,7 +96,7 @@ Scripts:
 	Make A 3D Platformer in Unity
 	gamesplusjames 
 
-Others: 
+================================================================Others===================================================================================
    All credits to the rightful owner
    Best effort has been made to document sources and and give credit to rightful owners and creaters
 
