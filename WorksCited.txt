@@ -73,6 +73,10 @@ Scripts:
         How To Build a Custom Input Manager in Unity C#
         Studica News
 
+	https://www.youtube.com/watch?v=h2d9Wc3Hhi0&list=PLiyfvmtjWC_V_H-VMGGAZi7n5E0gyhc37
+	Make A 3D Platformer in Unity
+	gamesplusjames 
+
 Others: 
    All credits to the rightful owner
    Best effort has been made to document sources and and give credit to rightful owners and creaters
