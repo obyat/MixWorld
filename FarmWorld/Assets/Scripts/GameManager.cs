@@ -6,8 +6,10 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public int currentGold;
-
     public Text goldText;
+
+    public int botOneGold;
+    public Text botOneText;
 
     public GameObject blueSnake;
     public GameObject greenSnake;
@@ -18,16 +20,28 @@ public class GameManager : MonoBehaviour
     public Text timer;
     public float timerText;
 
+    public float startTimer;
+    public GameObject[] startText;
+
+    public GameObject winText;
+    public GameObject loseText;
+    public GameObject player;
+
+    public bool startGame;
+
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 0;
         isBlue = true;
+        startTimer = 6f;
+        botOneGold = 0;
+        startGame = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         if(numOfSnakes < maxOfSnakes) 
         {
             spawnSnake();
@@ -36,14 +50,54 @@ public class GameManager : MonoBehaviour
         timer.text = "Timer: " + (int)timerText;
         if(timerText <= 0)
         {
-            // TODO
+            // TODO:
+            // Win or Lose game, Update opponent count.
+            Vector3 pos = player.transform.position;
+            pos.y += 3; 
+            if (currentGold > botOneGold)
+            {
+                Instantiate(winText, pos, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(loseText, pos, Quaternion.identity);
+            }
+            Time.timeScale = 0;
         }
+        if((int) startTimer > 4){
+            // On "Start in" screen
+        } else if((int) startTimer == 4){
+            Destroy(startText[0]);
+            startText[1].SetActive(true);
+        } else if((int) startTimer == 3){
+            Destroy(startText[1]);
+            startText[2].SetActive(true);
+        } else if((int) startTimer == 2){
+            Destroy(startText[2]);
+            startText[3].SetActive(true);
+        } else if((int) startTimer == 1){
+            Destroy(startText[3]);
+            startText[4].SetActive(true);
+        }
+        else if (startGame)
+        {
+            Time.timeScale = 1;
+            Destroy(startText[4]);
+            startGame = false;
+        }
+        startTimer -= .0024f;
     }
 
     public void addGold(int goldToAdd)
     {
         currentGold += goldToAdd;
         goldText.text = "Points: " + currentGold;
+        numOfSnakes--;
+    }
+    public void addBotGold(int goldToAdd)
+    {
+        botOneGold += goldToAdd;
+        botOneText.text = "Bot 1: " + botOneGold;
         numOfSnakes--;
     }
 
@@ -63,10 +117,10 @@ public class GameManager : MonoBehaviour
         numOfSnakes++;
     }
 
-    public void killedSnake()
-    {
-        numOfSnakes--;
-    }
+    // public void killedSnake()
+    // {
+    //     numOfSnakes--;
+    // }
 
     public void setNumOfSnakes(int num)
     {

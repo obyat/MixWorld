@@ -41,7 +41,7 @@ public class destroySnake : MonoBehaviour
         else if(other.CompareTag("bots"))
         {
 
-            FindObjectOfType<GameManager>().killedSnake();
+            FindObjectOfType<GameManager>().addBotGold(value);
             
             Instantiate(pickupEffect, transform.position, transform.rotation);
 
