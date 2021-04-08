@@ -21,10 +21,13 @@ public class PlayerController : MonoBehaviour
     public float knockBackTime;
     private float knockBackCounter;
 
+    public bool enableInput;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        enableInput = false;
     }
 
     // Update is called once per frame
@@ -78,5 +81,10 @@ public class PlayerController : MonoBehaviour
         knockBackCounter = knockBackTime;
         moveDirection = dir * knockBackForce;
         moveDirection.y = knockBackForce;
+    }
+
+    public void setEnableInput(bool b)
+    {
+        enableInput = b;
     }
 }

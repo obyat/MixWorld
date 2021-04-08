@@ -8,8 +8,12 @@ public class GameManager : MonoBehaviour
     public int currentGold;
     public Text goldText;
 
-    public int botOneGold;
-    public Text botOneText;
+    public int placementNum;
+    public Text placement;
+
+    public int numOfBots;
+    public int[] botspoints;
+    public GameObject[] bots;
 
     public GameObject blueSnake;
     public GameObject greenSnake;
@@ -35,8 +39,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         isBlue = true;
         startTimer = 6f;
-        botOneGold = 0;
         startGame = true;
+        numOfBots = 9;
     }
 
     // Update is called once per frame
@@ -54,7 +58,9 @@ public class GameManager : MonoBehaviour
             // Win or Lose game, Update opponent count.
             Vector3 pos = player.transform.position;
             pos.y += 3; 
-            if (currentGold > botOneGold)
+
+        
+            if (placementNum >= 2)
             {
                 Instantiate(winText, pos, Quaternion.identity);
             }
@@ -86,6 +92,15 @@ public class GameManager : MonoBehaviour
             startGame = false;
         }
         startTimer -= .0024f;
+
+        for(int i = 0; i < numOfBots; i++)
+        {
+            if(currentGold <= botspoints[i]) {
+                placementNum++;
+            }
+        }
+        updatePlacement(++placementNum);
+        placementNum = 0;
     }
 
     public void addGold(int goldToAdd)
@@ -94,10 +109,17 @@ public class GameManager : MonoBehaviour
         goldText.text = "Points: " + currentGold;
         numOfSnakes--;
     }
-    public void addBotGold(int goldToAdd)
+    public void addBotGold(GameObject bot, int goldToAdd)
     {
-        botOneGold += goldToAdd;
-        botOneText.text = "Bot 1: " + botOneGold;
+        // botOneGold += goldToAdd;
+        // botOneText.text = "Bot 1: " + botOneGold;
+        for(int i = 0; i < numOfBots; i++)
+        {
+            if(bot.GetInstanceID() == bots[i].GetInstanceID())
+            {
+                botspoints[i]++;
+            }
+        }
         numOfSnakes--;
     }
 
@@ -125,5 +147,11 @@ public class GameManager : MonoBehaviour
     public void setNumOfSnakes(int num)
     {
         numOfSnakes = num;
+    }
+
+    public void updatePlacement(int num)
+    {
+        int temp = numOfBots + 1;
+        placement.text = "Place: " + num + " of " + temp;
     }
 }

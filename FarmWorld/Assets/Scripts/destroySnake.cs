@@ -31,7 +31,6 @@ public class destroySnake : MonoBehaviour
         }
         else if(other.CompareTag("Player"))
         {
-
             FindObjectOfType<GameManager>().addGold(value);
 
             Instantiate(pickupEffect, transform.position, transform.rotation);
@@ -41,7 +40,7 @@ public class destroySnake : MonoBehaviour
         else if(other.CompareTag("bots"))
         {
 
-            FindObjectOfType<GameManager>().addBotGold(value);
+            FindObjectOfType<GameManager>().addBotGold(other.gameObject, value);
             
             Instantiate(pickupEffect, transform.position, transform.rotation);
 

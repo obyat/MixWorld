@@ -58,4 +58,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Mostly large unnecessary temp files
 /FarmWorld/Library/Artifacts/*
