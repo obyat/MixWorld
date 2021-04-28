@@ -14,7 +14,7 @@ public class FallingFloor : MonoBehaviour
     void Start()
     {
         initialPosition = transform.position;
-        dropTimer = 10f;
+        dropTimer = Random.Range(8f, 12f);
         speed = 10;
     }
 
@@ -24,7 +24,7 @@ public class FallingFloor : MonoBehaviour
         dropTimer -= Time.deltaTime;
         if(dropTimer < 0)
         {
-            dropTimer = 8f;
+            dropTimer = Random.Range(8f, 12f);
             if(Random.Range(0f, 1f) > 0.5f)
             {
                 falling = true;

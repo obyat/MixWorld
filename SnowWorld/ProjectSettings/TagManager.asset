@@ -7,6 +7,14 @@ TagManager:
   - trees
   - Projectile
   - ballDestroy
+  - snakes
+  - bots
+  - dest
+  - Dest2
+  - Dest1
+  - Dest3
+  - Dest4
+  - Dest5
   layers:
   - Default
   - TransparentFX
