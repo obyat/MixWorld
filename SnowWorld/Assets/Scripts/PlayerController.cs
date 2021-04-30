@@ -74,6 +74,10 @@ public class PlayerController : MonoBehaviour
 
         // Animator Variables
         anim.SetFloat("speed", (Mathf.Abs(horizontalInput) + Mathf.Abs(veriticalInput)));
+        if(transform.position.y < -30f)
+        {
+            transform.position = new Vector3(99f, 19f, 161f);
+        }
     }
 
     public void knockBack(Vector3 dir)
