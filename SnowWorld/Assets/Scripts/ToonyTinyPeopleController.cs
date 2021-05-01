@@ -12,6 +12,7 @@ public class ToonyTinyPeopleController : MonoBehaviour
     private int nextIndex;
     public string finalDest;
     public Rigidbody body = null;
+    public float knockBackTime;
 
     // Start is called before the first frame update
     void Start()
@@ -27,17 +28,19 @@ public class ToonyTinyPeopleController : MonoBehaviour
         ThisAgent.speed = 8f;
 
         animator.SetBool("isMoving", true);
+        knockBackTime = 2f;
+        nextIndex = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(body.velocity.magnitude <= 0.5f)
+        knockBackTime -= Time.deltaTime;
+        if(body.velocity.magnitude <= 0.05f && knockBackTime < 0)
         {
             body.isKinematic = true;
             ThisAgent.enabled = true;
-            // Debug.Log(body.velocity.magnitude);
-        }
+        } 
         if (ThisAgent.remainingDistance <= ThisAgent.stoppingDistance && dest == finalDest)
         {
             animator.SetBool("isMoving", false);
@@ -57,22 +60,23 @@ public class ToonyTinyPeopleController : MonoBehaviour
     }
     public void knockBack(Vector3 dir)
     {
+        ThisAgent.isStopped = true;
         body.isKinematic = false;
         ThisAgent.enabled = false;
-        // body.AddForce(dir * ThisAgent.speed);
-        body.AddForce(-100, -100, -100, ForceMode.Force);
-        Debug.Log(body.velocity.magnitude);
-        Debug.Log(dir * ThisAgent.speed);
+        body.AddForce(dir*40, ForceMode.Impulse);
+        knockBackTime = 0.1f;
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         {
-            Vector3 hitDir = other.transform.position - transform.position;
-            hitDir = hitDir.normalized;
-            hitDir.y = ThisAgent.speed;
-            FindObjectOfType<PlayerController>().knockBack(hitDir);
-            knockBack(hitDir);
+            Vector3 hitDirBot = transform.position - other.transform.position;
+
+            Vector3 hitDirPlayer = other.transform.position - transform.position;
+            
+            hitDirBot = hitDirBot.normalized;
+            this.knockBack(hitDirBot);
+            FindObjectOfType<PlayerController>().knockBackX(hitDirPlayer);
         }
     }
 }

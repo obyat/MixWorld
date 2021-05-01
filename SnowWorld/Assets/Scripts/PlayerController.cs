@@ -86,7 +86,12 @@ public class PlayerController : MonoBehaviour
         moveDirection = dir * knockBackForce;
         moveDirection.y = knockBackForce;
     }
-
+    public void knockBackX(Vector3 dir)
+    {
+        knockBackCounter = knockBackTime;
+        moveDirection = dir * knockBackForce;
+        // moveDirection.y = knockBackForce;
+    }
     public void setEnableInput(bool b)
     {
         enableInput = b;

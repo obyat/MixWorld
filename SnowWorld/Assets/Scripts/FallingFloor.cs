@@ -37,7 +37,7 @@ public class FallingFloor : MonoBehaviour
         // if(bots.transform.position - transform.position < 5f)
         // Also need z
         float policeX = bots.transform.position.x;
-        Debug.Log("POL POST" + policeX);
+        // Debug.Log("POL POST" + policeX);
         dropTimer -= Time.deltaTime;
         if(dropTimer < 0)
         {
@@ -63,7 +63,7 @@ public class FallingFloor : MonoBehaviour
                 bots.GetComponent<Rigidbody>().isKinematic = false;
                 bots.GetComponent<NavMeshAgent>().enabled = false;
                 bots.GetComponent<Rigidbody>().AddForce(-transform.forward*10, ForceMode.Impulse);
-                Debug.Log("POLICE DIST   " + Mathf.Abs(policeX - transform.position.x));
+                // Debug.Log("POLICE DIST   " + Mathf.Abs(policeX - transform.position.x));
             }
         }
     }

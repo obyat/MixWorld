@@ -24,7 +24,7 @@ public class HurtPlayer : MonoBehaviour
         {
             Vector3 hitDir = other.transform.position - transform.position;
             hitDir = hitDir.normalized;
-            FindObjectOfType<PlayerController>().knockBack(hitDir);
+            FindObjectOfType<PlayerController>().knockBackX(hitDir);
         }
     }
 }
