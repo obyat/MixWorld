@@ -65,6 +65,8 @@ public class ToonyTinyPeopleController : MonoBehaviour
         ThisAgent.enabled = false;
         body.AddForce(dir*40, ForceMode.Impulse);
         knockBackTime = 0.1f;
+        animator.SetBool("isMoving", true);
+        // ThisAgent.SetDestination(Destinations[Random.Range(0,Destinations.Length)].transform.position);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -75,8 +77,17 @@ public class ToonyTinyPeopleController : MonoBehaviour
             Vector3 hitDirPlayer = other.transform.position - transform.position;
             
             hitDirBot = hitDirBot.normalized;
+            hitDirPlayer = hitDirPlayer.normalized;
+
             this.knockBack(hitDirBot);
             FindObjectOfType<PlayerController>().knockBackX(hitDirPlayer);
+        }
+        if(other.CompareTag("BigSnowman") || other.CompareTag("RollingBall")
+            || other.CompareTag("Skeletons"))
+        {
+            Vector3 hitDirBot = transform.position - other.transform.position;
+            hitDirBot = hitDirBot.normalized;
+            this.knockBack(hitDirBot);
         }
     }
 }

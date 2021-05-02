@@ -33,6 +33,9 @@ TagManager:
   - Dest21
   - BigSnowman
   - police
+  - RollingBall
+  - Skeletons
+  - Doors
   layers:
   - Default
   - TransparentFX
