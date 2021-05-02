@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class ToonyTinyPeopleController : MonoBehaviour
     public string finalDest;
     public Rigidbody body = null;
     public float knockBackTime;
+    public float immuneTime;
+    private Vector3 spawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -22,32 +25,47 @@ public class ToonyTinyPeopleController : MonoBehaviour
         body = GetComponent<Rigidbody>();
         animator = transform.GetComponent<Animator>();
         Destinations = GameObject.FindGameObjectsWithTag(dest);
-        ThisAgent.SetDestination(Destinations[Random.Range(0,Destinations.Length)].transform.position);
+        ThisAgent.SetDestination(Destinations[UnityEngine.Random.Range(0,Destinations.Length)].transform.position);
         ThisAgent.isStopped = false;
         ThisAgent.stoppingDistance = 2f;
         ThisAgent.speed = 8f;
 
         animator.SetBool("isMoving", true);
         knockBackTime = 2f;
+        immuneTime = 1f;
         nextIndex = 1;
+
+        spawnPoint = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y <= -30) 
+        {
+            transform.position = spawnPoint;
+        }
+
         knockBackTime -= Time.deltaTime;
+        immuneTime -= Time.deltaTime;
         if(body.velocity.magnitude <= 0.05f && knockBackTime < 0)
         {
             body.isKinematic = true;
             ThisAgent.enabled = true;
         } 
-        if (ThisAgent.remainingDistance <= ThisAgent.stoppingDistance && dest == finalDest)
+        try{
+            if (ThisAgent.remainingDistance <= ThisAgent.stoppingDistance && dest == finalDest)
+            {
+                animator.SetBool("isMoving", false);
+            }
+            else if (ThisAgent.remainingDistance <= ThisAgent.stoppingDistance)
+            {
+                updateDest();
+            }
+        } 
+        catch (Exception e) 
         {
-            animator.SetBool("isMoving", false);
-        }
-        else if (ThisAgent.remainingDistance <= ThisAgent.stoppingDistance)
-        {
-            updateDest();
+            Debug.Log("NavMeshAgent things: " + e);
         }
     }
 
@@ -56,7 +74,7 @@ public class ToonyTinyPeopleController : MonoBehaviour
         nextIndex++;
         dest = "Dest" + nextIndex;
         Destinations = GameObject.FindGameObjectsWithTag(dest);
-        ThisAgent.SetDestination(Destinations[Random.Range(0,Destinations.Length)].transform.position);
+        ThisAgent.SetDestination(Destinations[UnityEngine.Random.Range(0,Destinations.Length)].transform.position);
     }
     public void knockBack(Vector3 dir)
     {
@@ -66,11 +84,11 @@ public class ToonyTinyPeopleController : MonoBehaviour
         body.AddForce(dir*40, ForceMode.Impulse);
         knockBackTime = 0.1f;
         animator.SetBool("isMoving", true);
-        // ThisAgent.SetDestination(Destinations[Random.Range(0,Destinations.Length)].transform.position);
+        ThisAgent.SetDestination(Destinations[UnityEngine.Random.Range(0,Destinations.Length)].transform.position);
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && immuneTime < 0)
         {
             Vector3 hitDirBot = transform.position - other.transform.position;
 
@@ -81,13 +99,29 @@ public class ToonyTinyPeopleController : MonoBehaviour
 
             this.knockBack(hitDirBot);
             FindObjectOfType<PlayerController>().knockBackX(hitDirPlayer);
+            immuneTime = 1f;
         }
-        if(other.CompareTag("BigSnowman") || other.CompareTag("RollingBall")
-            || other.CompareTag("Skeletons"))
+        if((other.CompareTag("BigSnowman") || other.CompareTag("RollingBall")
+            || other.CompareTag("Skeletons")) && immuneTime < 0)
         {
             Vector3 hitDirBot = transform.position - other.transform.position;
             hitDirBot = hitDirBot.normalized;
             this.knockBack(hitDirBot);
+
+            immuneTime = 1f;
+        }
+        if(other.CompareTag("Doors"))
+        {
+            if(other.GetComponent<DoorController>().isLocked)
+            {
+                nextIndex--;
+                dest = "Dest" + nextIndex;
+                Destinations = GameObject.FindGameObjectsWithTag(dest);
+                ThisAgent.SetDestination(Destinations[UnityEngine.Random.Range(0,Destinations.Length)].transform.position);
+            }
+        }
+        if(other.CompareTag("Respawn")){
+            spawnPoint = other.transform.position;
         }
     }
 }

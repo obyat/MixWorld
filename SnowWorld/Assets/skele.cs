@@ -29,7 +29,6 @@ public class skele : MonoBehaviour
         } else {
             transform.Translate(transform.forward* Time.deltaTime);
         }
-        Debug.Log(transform.position.z);
         if (transform.position.z < 155f || transform.position.z > 175f
             || transform.position.x < -8f || transform.position.x > 75f)
         {

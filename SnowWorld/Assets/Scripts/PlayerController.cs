@@ -23,11 +23,14 @@ public class PlayerController : MonoBehaviour
 
     public bool enableInput;
 
+    private Vector3 spawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
         enableInput = false;
+        spawnPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -76,7 +79,8 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("speed", (Mathf.Abs(horizontalInput) + Mathf.Abs(veriticalInput)));
         if(transform.position.y < -30f)
         {
-            transform.position = new Vector3(99f, 19f, 161f);
+            // transform.position = new Vector3(99f, 19f, 161f);
+            transform.position = spawnPoint;
         }
     }
 
@@ -95,5 +99,11 @@ public class PlayerController : MonoBehaviour
     public void setEnableInput(bool b)
     {
         enableInput = b;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Respawn")){
+            spawnPoint = other.transform.position;
+        }
     }
 }

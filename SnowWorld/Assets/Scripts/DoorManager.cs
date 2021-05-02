@@ -5,20 +5,24 @@ using UnityEngine;
 public class DoorManager : MonoBehaviour
 {
     public GameObject[] doors;
-    public GameObject[] keys;
     public int frontDoor;
     public int backDoor;
+    private DoorController doorOne;
+    private DoorController doorTwo;
 
     // Start is called before the first frame update
     void Start()
     {
-        frontDoor = Random.Range(0,4);
-        backDoor = Random.Range(2,6);
+        frontDoor = Random.Range(0,3);
+        backDoor = Random.Range(3,6);
+        doorOne = doors[frontDoor].GetComponent<DoorController>();
+        doorTwo = doors[backDoor].GetComponent<DoorController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        doorOne.setIsLocked(false);
+        doorTwo.setIsLocked(false);
     }
 }
