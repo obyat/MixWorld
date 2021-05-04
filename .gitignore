@@ -61,3 +61,4 @@ crashlytics-build.properties
 # Mostly large unnecessary temp files
 /FarmWorld/Library/Artifacts/*
 /SnowWorld/Library/Artifacts/*
+/MixWorlds/Library/Artifacts/*
