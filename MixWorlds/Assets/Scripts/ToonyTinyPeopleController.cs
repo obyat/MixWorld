@@ -10,7 +10,7 @@ public class ToonyTinyPeopleController : MonoBehaviour
     private Animator animator;
     private GameObject[] Destinations;
     public string dest;
-    private int nextIndex;
+    public int nextIndex;
     public string finalDest;
     public Rigidbody body = null;
     public float knockBackTime;
