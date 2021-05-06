@@ -156,6 +156,21 @@ public class GameManager : MonoBehaviour
     public void updatePlacement(int num)
     {
         int temp = numOfBots + 1;
-        placement.text = "Place: " + num + " of " + temp;
+        // placement.text = "Place: " + num + " / " + temp;
+        if(num > 3)
+        {
+            placement.text = "Placement: " + num + "th" ;
+        }
+        else if(num > 2)
+        {
+            placement.text = "Placement: " + num+ "rd" ;
+        }
+        else if(num > 1)
+        {
+            placement.text = "Placement: " + num + "nd" ;
+        } else if(num > 0)
+        {
+            placement.text = "Placement: " + num + "st" ;
+        }
     }
 }

@@ -22,7 +22,8 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 0;
+        //TODO: TIMESCALE
+        Time.timeScale = 1;
         startTimer = 6f;
         startGame = true;
         hasEntered = false;
@@ -67,12 +68,14 @@ public class LevelManager : MonoBehaviour
             qualifiedText.text = qualifiedNum + " of " + totalEnemies;
             hasEntered = true;
             Vector3 pos = other.transform.position;
+            pos.x += 1;
             pos.y += 3; 
+            pos.z += 4;
             GameObject won = Instantiate(winText, pos, Quaternion.identity);
         }
         if(other.CompareTag("bots")){
             qualifiedNum++;
-            qualifiedText.text = qualifiedNum + " of " + totalEnemies;
+            qualifiedText.text = qualifiedNum + " / " + totalEnemies;
         }
     }
 }
