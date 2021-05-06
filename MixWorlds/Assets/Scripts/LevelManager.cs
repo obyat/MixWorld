@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
 
     public ParticleSystem portal;
     public bool hasEntered;
+    private bool hasLost;
 
     public GameObject winText;
     public GameObject loseText;
@@ -27,6 +28,7 @@ public class LevelManager : MonoBehaviour
         startTimer = 6f;
         startGame = true;
         hasEntered = false;
+        hasLost = false;
     }
 
     // Update is called once per frame

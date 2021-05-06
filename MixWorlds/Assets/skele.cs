@@ -48,8 +48,8 @@ public class skele : MonoBehaviour
         if((other.CompareTag("Player") || other.CompareTag("bots")) && readyToAttack < 0)
         {
             ThisAgent.SetDestination(other.transform.position);
-            ThisAgent.acceleration = 20f;
-            ThisAgent.speed = 20f;
+            ThisAgent.acceleration = 25f;
+            ThisAgent.speed = 25f;
             waitTime = 3f;
             readyToAttack = 5f;
         }

@@ -23,7 +23,7 @@ public class HurtPlayerSkele : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Vector3 hitDir = other.transform.position - transform.position;
-            hitDir = hitDir.normalized*5;
+            hitDir = hitDir.normalized*3;
             FindObjectOfType<PlayerController>().knockBackX(hitDir);
             sound.Play();
         }
