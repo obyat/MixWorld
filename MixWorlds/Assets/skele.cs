@@ -22,7 +22,7 @@ public class skele : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         time = Random.Range(2f, 4f);
         initialPos = transform.position;
-        speed = 2f;
+        speed = 8f;
         readyToAttack = 3f;
         waitTime = 2f;
         animator.SetBool("isWalk", true);
@@ -43,13 +43,14 @@ public class skele : MonoBehaviour
             animator.SetBool("isWalk", true);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if((other.CompareTag("Player") || other.CompareTag("bots")) && readyToAttack < 0)
+        if((other.CompareTag("Player") || other.CompareTag("bots")) && (readyToAttack < 0))
         {
             ThisAgent.SetDestination(other.transform.position);
-            ThisAgent.acceleration = 25f;
-            ThisAgent.speed = 25f;
+            ThisAgent.acceleration = 35f;
+            ThisAgent.speed = 35f;
             waitTime = 3f;
             readyToAttack = 5f;
         }
