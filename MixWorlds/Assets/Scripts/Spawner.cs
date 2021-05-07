@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     
     void Start()
     {
-        WeakEthan =  GameObject.FindGameObjectWithTag("Enemy");
+        // WeakEthan =  GameObject.FindGameObjectWithTag("Enemy");
         EthanType = WeakEthan;
         EthanCount =  GameController.toonyPeopleCount;
         difficulty =  GameController.difficulty;
