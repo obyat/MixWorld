@@ -1,0 +1,20 @@
+1. portal:
+trigger on portal:
+    if other = player 
+        wait for you win?
+        wait 2f and then scene.loadbeachworld
+    ELSE GameOver
+(COMPLETE)
+
+2. ui 0/1 Teleported
+(COMPLETE)
+
+3. start 1 2 3
+(COMPLETE)
+
+// WILL DO LATER
+@always animated to walk
+1. Start() ThisAgent.dest = tansform.position;
+1. 50 percent chance to patrol with random box around them
+2. @Trigger 50 percent ThisAgent.dest = player 
+3. or random timer
